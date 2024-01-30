@@ -1,27 +1,31 @@
 import React from 'react'
 import { Image, Text, View } from '../../atlasNative'
+import { navUpdate } from '../../redux/navSlice'
+import { useDispatch } from 'react-redux';
 
-export function ProfileCard({ name, username, img, size }: any) {
+export function ProfileCard({ firstName, lastName, userName, avatarURL, size }: any) {
+
+    const dispatch = useDispatch();
     return (
         <View className={`flex-1 flex-row items-center ${sizes[size].gap.column}`}>
-            <View className={`relative aspect-square ${sizes[size].img.width}`}>
-                <View className={`absolute right-0 bottom-0 w-97% h-97%  bg-bzzr-10 ${sizes[size].img.rounded}`}></View>
-                <Image
-                    className={`absolute left-0 top-0 w-97% h-97% ${sizes[size].img.rounded}`}
-                    source={{ uri: img }}
-                />
+            <View className={`relative aspect-square ${sizes[size].avatar.width}`}>
+                <View className={`absolute right-0 bottom-0 w-95% h-95%  bg-bzzr-10 ${sizes[size].avatar.rounded}`}></View>
+                {avatarURL && <Image
+                    className={`absolute left-0 top-0 w-95% h-95% ${sizes[size].avatar.rounded}`}
+                    source={{ uri: avatarURL }}
+                />}
             </View>
-            <View className={`flex-1 ${sizes[size].gap.row}`}>
-                <Text numberOfLines={1} ellipsizeMode="tail" className={`uppercase text-white ${sizes[size].name}`}>{name}</Text>
-                <Text numberOfLines={1} ellipsizeMode="tail" className={`text-bzzr-100 ${sizes[size].username}`}>@{username} </Text>
-            </View>
+            {userName && <View className={`flex-1 ${sizes[size].gap.row}`}>
+                <Text onPress={() => { dispatch(navUpdate({ num: 4 })) }} numberOfLines={1} ellipsizeMode="tail" className={`uppercase text-white ${sizes[size].name}`}>{firstName} {lastName}</Text>
+                <Text numberOfLines={1} ellipsizeMode="tail" className={`text-bzzr-100 ${sizes[size].username}`}>@{userName} </Text>
+            </View>}
         </View>
     )
 }
 
 const sizes: any = {
     '2xl': {
-        img: {
+        avatar: {
             width: 'w-180',
             rounded: 'rounded-18'
         },
@@ -33,7 +37,7 @@ const sizes: any = {
         },
     },
     lg: {
-        img: {
+        avatar: {
             width: 'w-60',
             rounded: 'rounded-6'
         },
@@ -45,7 +49,7 @@ const sizes: any = {
         },
     },
     md: {
-        img: {
+        avatar: {
             width: 'w-60',
             rounded: 'rounded-10'
         },
@@ -57,7 +61,7 @@ const sizes: any = {
         },
     },
     sm: {
-        img: {
+        avatar: {
             width: 'w-45',
             rounded: 'rounded-8'
         },

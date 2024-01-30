@@ -4,11 +4,8 @@ import { styles } from './styleSheet';
 
 function styleGenerator(className: string) {
     if (!styles[className.replace(/-/g, '_')]) {
-
         const splitValues = className.split('-');
-
         let name, value;
-
         if (splitValues.length === 2) {
             name = splitValues[0];
             value = splitValues[1];
@@ -42,19 +39,8 @@ function styleGenerator(className: string) {
                 } else {
                     generatedStyle[property] = parseInt(value) * rem;
                 }
-
             }
             styles[`${name}_${value}`] = generatedStyle;
-
-            if (name === 'roundeddd') {
-                console.log(`${name}_${value}`)
-                console.log(generatedStyle)
-                console.log('####')
-                console.log('####')
-                console.log('####')
-                console.log(styles[`${name}_${value}`] = generatedStyle)
-            }
-
         } else {
             console.log(`Class '${className}' not generated. Check sizesAbbr array.`);
         }

@@ -4,14 +4,13 @@ import { ProfileCard } from '../cards/ProfileCard';
 import { LogoIcon } from '../shapes/svg/LogoIcon';
 import { EllipsisIcon } from '../shapes/svg/EllipsisIcon';
 import { IconMenuList } from '../lists/IconMenuList';
+import { useSelector } from 'react-redux';
+import { useGetUser } from '../../hooks/useQuery/user';
 
-const profileCardData = {
-    name: 'Taoufik Harmouche',
-    username: 'its_me2h',
-    img: 'https://i.postimg.cc/y8fnSKKC/f-1.png'
-}
+export function SideNavbar() {
+    const userId: any = useSelector((state: any) => state.user.id)
+    const { data: userData } = useGetUser(userId);
 
-export function SideNavbar({ setNavigation }: any) {
     return (
         <View className='flex-1 justify-between'>
 
@@ -21,13 +20,13 @@ export function SideNavbar({ setNavigation }: any) {
             </View>
 
             {/* SIDENAVBAR MENU */}
-            <IconMenuList setNavigation={setNavigation} />
+            <IconMenuList />
 
             {/* PROFILECARD CONTAINER */}
             <View className='flex-row mx-22 gap-25'>
                 <ProfileCard
                     size='sm'
-                    {...profileCardData}
+                    {...userData}
                 />
                 <View className='w-45 aspect-square bg-slate-900 p-10 rounded-999'>
                     <EllipsisIcon height='100%' className='text-white' />

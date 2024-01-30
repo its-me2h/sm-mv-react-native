@@ -1,6 +1,7 @@
 import React from 'react'
 import { YView } from '../components/base/YView';
 import { Image, Text, View } from '../atlasNative';
+import { SearchInput } from '../components/inputs/SearchInput';
 
 export function DiscoverView() {
 
@@ -18,9 +19,9 @@ export function DiscoverView() {
     ];
 
     return (
-        <YView className='flex-1 border-1 border-bzzr-300'>
-            <View className='py-30 gap-40 px-40'>
-
+        <YView className='flex-1'>
+            <View className='py-30 px-60 gap-40'>
+                <SearchInput />
                 <View className='bg-slate-900 h-45h rounded-10'></View>
 
                 {/* Categories */}

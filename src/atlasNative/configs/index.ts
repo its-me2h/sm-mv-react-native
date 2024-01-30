@@ -33,10 +33,10 @@ const sizesAbbr: any = {
     'gap_y': 'columnGap',
     // Border
     'border': 'borderWidth',
-    'border-t': 'borderTopWidth',
-    'border-l': 'borderLeftWidth',
-    'border-r': 'borderRightWidth',
-    'border-b': 'borderBottomWidth',
+    'border_t': 'borderTopWidth',
+    'border_l': 'borderLeftWidth',
+    'border_r': 'borderRightWidth',
+    'border_b': 'borderBottomWidth',
     // Border Radius
     'rounded': 'borderRadius',
     'rounded_t': 'borderTopRadius',

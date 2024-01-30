@@ -4,21 +4,16 @@ import { YView } from '../components/base/YView';
 import { XView } from '../components/base/XView';
 import { PanoCarousel } from '../components/carousels/PanoCarousel';
 import PostCard from '../components/cards/PostCard';
+import { ProfileCardList } from '../components/lists/ProfileCardList';
+import { SearchInput } from '../components/inputs/SearchInput';
+import { useGetSuggestedPros } from '../hooks/useQuery/user';
+import { useGetSports } from '../hooks/useQuery/sport';
+import { ClassicCard } from '../components/cards/ClassicCard';
 
 export function FeedView() {
 
-    const CategoriesData = [
-        { id: 1, title: 'Football', athletesCount: 27, img: 'https://i.postimg.cc/BQWyk8vp/Rectangle-5538.png' },
-        { id: 2, title: 'Soccer', athletesCount: 65, img: 'https://i.postimg.cc/WpqC5mst/Rectangle-5539.png' },
-        { id: 3, title: 'Tennis', athletesCount: 20, img: 'https://i.postimg.cc/SsJ3FC8T/Rectangle-5540.png' },
-        { id: 4, title: 'Boxing', athletesCount: 32, img: 'https://i.postimg.cc/SNW5hy2h/Mask-group-1.png' },
-        { id: 5, title: 'Baseball', athletesCount: 25, img: 'https://i.postimg.cc/5ttkLLP4/Rectangle-5647.png' },
-        { id: 6, title: 'Volleyball', athletesCount: 12, img: 'https://i.postimg.cc/mgBnZ0CF/Mask-group.png' },
-        { id: 7, title: 'Skiing', athletesCount: 22, img: 'https://i.postimg.cc/d1pXq3jq/Mask-group-2.png' },
-        { id: 8, title: 'Swimming', athletesCount: 30, img: 'https://i.postimg.cc/dV6xh4jN/Rectangle-5541.png' },
-        { id: 9, title: 'Golf', athletesCount: 10, img: 'https://i.postimg.cc/W49CHXDq/Mask-group-3.png' },
-        { id: 10, title: 'Ice hockey', athletesCount: 8, img: 'https://i.postimg.cc/6qZPTKMC/Mask-group-4.png' },
-    ];
+    const { data: suggestedProData } = useGetSuggestedPros(6);
+    const { data: sportsData } = useGetSports(8);
 
     const PostsData = [
         {
@@ -64,42 +59,52 @@ export function FeedView() {
     ];
 
     return (
-        <YView className='flex-1 border-1 border-bzzr-300'>
-            <View className='pt-30 gap-40 px-40'>
+        <View className='flex-row flex-1'>
+            {/* FEED CONTAINER */}
+            <YView>
+                <View className='pt-30 px-60 gap-40'>
+                    <PanoCarousel />
+                    <Categories data={sportsData} />
 
-                {/* Lives */}
-                <PanoCarousel />
-
-                {/* Categories */}
-                <View>
-                    <View className='flex-row justify-between items-end mb-10'>
-                        <Text className='text-30 text-white'>CATEGORIES</Text>
-                        <Text className='text-18 text-white'>See more</Text>
+                    {/* Poste */}
+                    <View className='gap-30 hidden'>
+                        {PostsData?.map((post, index) => (
+                            <PostCard key={index} {...post} />
+                        ))}
                     </View>
-                    <XView>
-                        <View className='flex-row gap-12'>
-                            {CategoriesData.map((category: any) => (
-                                <View key={category.id} className='w-200'>
-                                    <Image
-                                        className='h-250 bg-slate-500 rounded-10 mb-5'
-                                        source={{ uri: category.img }}
-                                    />
-                                    <Text className='text-20 text-white uppercase'>{category.title}</Text>
-                                    <Text className='text-16 text-bzzr-100'>{`${category.athletesCount} athletes`}</Text>
-                                </View>
-                            ))}
-                        </View>
-                    </XView>
-                </View>
 
-                {/* Poste */}
-                <View className='gap-30'>
-                    {PostsData.map((post, index) => (
-                        <PostCard key={index} {...post} />
-                    ))}
                 </View>
+            </YView>
 
-            </View>
-        </YView>
+            {/* RIGHT BAR CONTAINER */}
+            {<View className='w-420 pt-30 px-25 gap-40  border-l-1 border-bzzr-300'>
+                <SearchInput />
+                <ProfileCardList name='trending' data={suggestedProData} />
+            </View>}
+
+        </View>
     );
 };
+
+function Categories({ data }: any) {
+    return (
+        <View>
+            <View className='flex-row justify-between items-end mb-10'>
+                <Text className='text-30 text-white'>CATEGORIES</Text>
+                <Text className='text-18 text-white'>see more</Text>
+            </View>
+            <XView>
+                <View className='flex-row gap-12'>
+                    {data?.map((item: any) => (
+                        <ClassicCard
+                            key={item.id}
+                            labe={item.name}
+                            subLabel={item.CountPros + ' athletes'}
+                            mediaURL={item.mediaURL}
+                        />
+                    ))}
+                </View>
+            </XView>
+        </View>
+    )
+}

@@ -8,11 +8,11 @@ export function ProfileCardList({ name, data }: any) {
         <YView>
             < Text className='text-30 text-white uppercase mb-15'>{name}</Text >
             <View className='gap-30'>
-                {data.map((user: any, i: number) => (
+                {data?.map((item: any) => (
                     <ProfileCard
                         size='md'
-                        key={i}
-                        {...user}
+                        key={item.user.id}
+                        {...item.user}
                     />
                 ))}
             </View>
