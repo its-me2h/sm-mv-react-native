@@ -1,8 +1,8 @@
 import { gql } from 'graphql-request';
 
-export const GET_USER = gql`
-    query getUser($id: ID!) {
-        user(id: $id) {
+export const GET_USER_INFO = gql`
+    query getUserInfo($userId: ID!) {
+        user(id: $userId) {
             id
             isPro
             userName
@@ -13,9 +13,9 @@ export const GET_USER = gql`
     }
 `;
 
-export const GET_PROFILE = gql`
-    query getProfile($id: ID!) {
-        user(id: $id) {
+export const GET_USER_PROFILE = gql`
+    query getUserProfile($userId: ID!) {
+        user(id: $userId) {
             id
             isPro
             userName

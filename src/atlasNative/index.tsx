@@ -9,6 +9,7 @@ import {
     TextInput as NativeTextInput,
 } from 'react-native';
 import { Svg as NativeSvg } from 'react-native-svg';
+import { Link as NativeLink } from '@react-navigation/native';
 import StyleParser from './utils/styleParser';
 
 function styleInjector(Component: any, selfClosing?: boolean) {
@@ -27,6 +28,7 @@ const Button = styleInjector(NativeButton);
 const Pressable = styleInjector(NativePressable);
 const Image = styleInjector(NativeImage, true);
 const TextInput = styleInjector(NativeTextInput, true);
+const Link = styleInjector(NativeLink);
 const Svg = styleInjector(NativeSvg);
 
 export {
@@ -37,5 +39,6 @@ export {
     Pressable,
     Image,
     TextInput,
+    Link,
     Svg,
 };

@@ -93,28 +93,39 @@ export function PanoCarousel() {
 
     const profilesCardData = [
         {
-            name: 'Leo Messi',
+            id: 1,
+            firstName: 'Leo',
+            lastName: 'Messi',
             username: 'leomessi',
-            img: 'https://i.postimg.cc/G3qCQgMR/bzzr1-1.jpg'
+            avatarURL: 'https://i.postimg.cc/G3qCQgMR/bzzr1-1.jpg',
+            img: 'https://i.postimg.cc/G3qCQgMR/bzzr1-1.jpg',
         },
         {
+            id: 1,
             name: 'Cristiano Ronaldo',
             username: 'cristiano',
+            avatarURL: 'https://i.postimg.cc/YCmBtrt2/bzzr1-2.jpg',
             img: 'https://i.postimg.cc/YCmBtrt2/bzzr1-2.jpg'
         },
         {
+            id: 1,
             name: 'Xavi Hernández',
             username: 'xavi',
-            img: 'https://i.postimg.cc/tCcH0ZQm/bzzr1.jpg'
+            avatarURL: 'https://i.postimg.cc/tCcH0ZQm/bzzr1.jpg',
+            img: 'https://i.postimg.cc/tCcH0ZQm/bzzr1.jpg',
         },
         {
+            id: 1,
             name: 'Mohamed Salah',
             username: 'mosalah',
-            img: 'https://i.postimg.cc/Ght1SPNy/bzzr1-3.jpg'
+            avatarURL: 'https://i.postimg.cc/Ght1SPNy/bzzr1-3.jpg',
+            img: 'https://i.postimg.cc/Ght1SPNy/bzzr1-3.jpg',
         },
         {
+            id: 1,
             name: 'Neymar Jr',
             username: 'neymarjr',
+            avatarURL: 'https://i.postimg.cc/L5WYZthZ/bzzr1-4.jpg',
             img: 'https://i.postimg.cc/L5WYZthZ/bzzr1-4.jpg'
         },
     ];

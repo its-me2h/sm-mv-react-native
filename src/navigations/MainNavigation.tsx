@@ -1,20 +1,27 @@
 import React from 'react'
-import { FeedView } from '../views/FeedView'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { HomeView } from '../views/HomeView'
 import { DiscoverView } from '../views/DiscoverView'
-import { SubscriptionView } from '../views/SubscriptionView'
-import { SettingView } from '../views/SettingView'
+import { SubscriptionsView } from '../views/SubscriptionsView'
+import { SettingsView } from '../views/SettingsView'
 import { ProfileView } from '../views/ProfileView'
-import { useSelector } from 'react-redux'
+
+const Stack = createNativeStackNavigator();
 
 export function MainNavigation() {
-    const nav: any = useSelector((state: any) => state.nav.num)
+
+    const screenOptions = {
+        headerShown: false,
+        animationEnabled: false
+    };
+
     return (
-        <>
-            {nav === 0 && <FeedView />}
-            {nav === 1 && <DiscoverView />}
-            {nav === 2 && <SubscriptionView />}
-            {nav === 3 && <SettingView />}
-            {nav === 4 && <ProfileView />}
-        </>
+        <Stack.Navigator screenOptions={screenOptions}>
+            <Stack.Screen name="Home" component={HomeView} options={{ animation: 'none' }} />
+            <Stack.Screen name="Discover" component={DiscoverView} options={{ animation: 'none' }} />
+            <Stack.Screen name="Subscriptions" component={SubscriptionsView} options={{ animation: 'none' }} />
+            <Stack.Screen name="Settings" component={SettingsView} options={{ animation: 'none' }} />
+            <Stack.Screen name="Profile" component={ProfileView} options={{ animation: 'none' }} />
+        </Stack.Navigator >
     )
-}
+};

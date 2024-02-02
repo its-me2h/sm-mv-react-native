@@ -1,26 +1,53 @@
 import React from 'react'
-import { Image, Text, View } from '../../atlasNative'
-import { navUpdate } from '../../redux/navSlice'
-import { useDispatch } from 'react-redux';
+import { Image, Text, View, Link } from '../../atlasNative'
 
-export function ProfileCard({ firstName, lastName, userName, avatarURL, size }: any) {
-
-    const dispatch = useDispatch();
+export function ProfileCard({ id, userName, firstName, lastName, avatarURL, size }: any) {
     return (
         <View className={`flex-1 flex-row items-center ${sizes[size].gap.column}`}>
+
+            {/* AVATAR */}
             <View className={`relative aspect-square ${sizes[size].avatar.width}`}>
+                <Link to={{ screen: 'Profile', params: { id: id } }} className='absolute w-full h-full z-2'></Link>
                 <View className={`absolute right-0 bottom-0 w-95% h-95%  bg-bzzr-10 ${sizes[size].avatar.rounded}`}></View>
-                {avatarURL && <Image
-                    className={`absolute left-0 top-0 w-95% h-95% ${sizes[size].avatar.rounded}`}
-                    source={{ uri: avatarURL }}
-                />}
+                {avatarURL &&
+                    <Image
+                        className={`absolute left-0 top-0 w-95% h-95% ${sizes[size].avatar.rounded}`}
+                        source={{ uri: avatarURL }}
+                    />
+                }
             </View>
+
+            {/* NAME */}
             {userName && <View className={`flex-1 ${sizes[size].gap.row}`}>
-                <Text onPress={() => { dispatch(navUpdate({ num: 4 })) }} numberOfLines={1} ellipsizeMode="tail" className={`uppercase text-white ${sizes[size].name}`}>{firstName} {lastName}</Text>
+                <Link to={{ screen: 'Profile', params: { id: id } }} numberOfLines={1} ellipsizeMode="tail">
+                    <Text className={`uppercase text-white ${sizes[size].name}`}>{firstName} {lastName}</Text>
+                </Link>
                 <Text numberOfLines={1} ellipsizeMode="tail" className={`text-bzzr-100 ${sizes[size].username}`}>@{userName} </Text>
             </View>}
+
         </View>
     )
+}
+
+// PROFILECARDSKELETON COMPONENT FOR SKELETON LOADING
+export function ProfileCardSkeleton({ size }: any) {
+    return (
+        <View className={`flex-1 flex-row items-center ${sizes[size].gap.column}`}>
+
+            {/* AVATAR */}
+            <View className={`relative aspect-square ${sizes[size].avatar.width}`}>
+                <View className={`absolute right-0 bottom-0 w-95% h-95%  bg-slate-800 ${sizes[size].avatar.rounded}`}></View>
+                <View className={`absolute left-0 top-0 w-95% h-95%  bg-slate-900 ${sizes[size].avatar.rounded}`}></View>
+            </View>
+
+            {/* NAME */}
+            {<View className={`flex-1 ${sizes[size].gap.row}`}>
+                <Text numberOfLines={1} className={`bg-slate-800 ${sizes[size].name}`}></Text>
+                <Text numberOfLines={1} className={`bg-slate-900 mr-25% ${sizes[size].username}`}></Text>
+            </View>}
+
+        </View>
+    );
 }
 
 const sizes: any = {

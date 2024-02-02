@@ -1,22 +1,13 @@
 import { useQuery } from 'react-query';
-import { GET_SPORTS } from '../../api/graphql/queries/sport';
+import { fetchData } from '../../api';
 import { reactQueryConfig } from './config';
-import { api } from '../../api';
+import { GET_SPORTS } from '../../api/graphql/queries/sport';
 
-export const useGetSports = (limit: any) => {
-    return useQuery(['getSports', limit], () => GetSports(limit), {
+export const getSports = (limit: any) => {
+    return useQuery(['getBasicUserInfo', limit], () => fetchData(GET_SPORTS, { limit }), {
         ...reactQueryConfig,
         onError: (error) => {
-            console.error('Error in useGetSports: ', error);
+            console.error('Error in useGetBasicUserInfo: ', error);
         },
     });
-};
-
-const GetSports = async (limit: any) => {
-    try {
-        const data: any = await api.request(GET_SPORTS, { limit });
-        return data.sport;
-    } catch (error) {
-        console.error('Error in useGetSports: ', error);
-    }
 };

@@ -3,7 +3,7 @@ import { Text, View } from '../atlasNative';
 import { YView } from '../components/base/YView';
 import { ProfileCard } from '../components/cards/ProfileCard';
 
-export function SubscriptionView() {
+export function SubscriptionsView() {
     const profilesCardData = [
         {
             name: 'Leo Messi',

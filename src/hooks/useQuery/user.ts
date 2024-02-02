@@ -1,56 +1,35 @@
 import { useQuery } from 'react-query';
-import { GET_PROFILE, GET_SUGGESTED_PROS, GET_USER } from '../../api/graphql/queries/user';
+import { fetchData } from '../../api';
 import { reactQueryConfig } from './config';
-import { api } from '../../api';
+import {
+    GET_USER_INFO,
+    GET_USER_PROFILE,
+    GET_SUGGESTED_PROS
+} from '../../api/graphql/queries/user';
 
-export const useGetUser = (id: any) => {
-    return useQuery(['getUser', id], () => getUser(id), {
+export const getUserInfo = (userId: any) => {
+    return useQuery(['getUserInfo', userId], () => fetchData(GET_USER_INFO, { userId }), {
         ...reactQueryConfig,
         onError: (error) => {
-            console.error('Error in useGetUser: ', error);
+            console.error('Error in useGetUserInfo: ', error);
         },
     });
 };
-const getUser = async (id: any) => {
-    try {
-        const data: any = await api.request(GET_USER, { id });
-        return data.user;
-    } catch (error) {
-        console.error('Error in useGetUser: ', error);
-    }
-};
 
-export const useGetProfile = (id: any) => {
-    return useQuery(['getProfile', id], () => getProfile(id), {
+export const getUserProfile = (userId: any) => {
+    return useQuery(['getUserProfile', userId], () => fetchData(GET_USER_PROFILE, { userId }), {
         ...reactQueryConfig,
         onError: (error) => {
-            console.error('Error in useGetProfile: ', error);
+            console.error('Error in getUserProfile: ', error);
         },
     });
 };
-const getProfile = async (id: any) => {
-    try {
-        const data: any = await api.request(GET_PROFILE, { id });
-        return data.user;
-    } catch (error) {
-        console.error('Error in useGetProfile: ', error);
-    }
-};
 
-export const useGetSuggestedPros = (limit: any) => {
-    return useQuery(['getSuggestedPros', limit], () => GetSuggestedPros(limit), {
+export const getSuggestedPros = (limit: any) => {
+    return useQuery(['getSuggestedPros', limit], () => fetchData(GET_SUGGESTED_PROS, { limit }), {
         ...reactQueryConfig,
         onError: (error) => {
             console.error('Error in useGetSuggestedPros: ', error);
         },
     });
 };
-const GetSuggestedPros = async (limit: any) => {
-    try {
-        const data: any = await api.request(GET_SUGGESTED_PROS, { limit });
-        return data.pro;
-    } catch (error) {
-        console.error('Error in useGetSuggestedPros: ', error);
-    }
-};
-
