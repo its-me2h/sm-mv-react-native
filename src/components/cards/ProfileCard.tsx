@@ -19,10 +19,16 @@ export function ProfileCard({ id, userName, firstName, lastName, avatarURL, size
 
             {/* NAME */}
             {userName && <View className={`flex-1 ${sizes[size].gap.row}`}>
-                <Link to={{ screen: 'Profile', params: { id: id } }} numberOfLines={1} ellipsizeMode="tail">
-                    <Text className={`uppercase text-white ${sizes[size].name}`}>{firstName} {lastName}</Text>
+                <Link
+                    numberOfLines={1}
+                    ellipsizeMode="tail"
+                    to={{ screen: 'Profile', params: { id: id } }}
+                    className={`uppercase text-white ${sizes[size].name}`}
+                >
+                    {firstName} {lastName}
                 </Link>
-                <Text numberOfLines={1} ellipsizeMode="tail" className={`text-bzzr-100 ${sizes[size].username}`}>@{userName} </Text>
+
+                <Text numberOfLines={1} ellipsizeMode="tail" className={`text-bzzr-100 ${sizes[size].username}`}>@{userName}</Text>
             </View>}
 
         </View>

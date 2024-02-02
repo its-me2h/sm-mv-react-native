@@ -17,11 +17,35 @@ export function MainNavigation() {
 
     return (
         <Stack.Navigator screenOptions={screenOptions}>
-            <Stack.Screen name="Home" component={HomeView} options={{ animation: 'none' }} />
-            <Stack.Screen name="Discover" component={DiscoverView} options={{ animation: 'none' }} />
-            <Stack.Screen name="Subscriptions" component={SubscriptionsView} options={{ animation: 'none' }} />
-            <Stack.Screen name="Settings" component={SettingsView} options={{ animation: 'none' }} />
-            <Stack.Screen name="Profile" component={ProfileView} options={{ animation: 'none' }} />
+            <Stack.Screen
+                name="Home"
+                component={HomeView}
+                options={{ animation: 'none' }}
+            />
+            <Stack.Screen
+                name="Discover"
+                component={DiscoverView}
+                options={{ animation: 'none' }}
+            />
+            <Stack.Screen
+                name="Subscriptions"
+                component={SubscriptionsView}
+                options={{ animation: 'none' }}
+            />
+            <Stack.Screen
+                name="Settings"
+                component={SettingsView}
+                options={{ animation: 'none' }}
+            />
+            <Stack.Screen
+                navigationKey={true ? 'user' : 'guest'}
+                name="Profile"
+                component={ProfileView}
+                options={() => ({
+                    title: 'My profile',
+                    animation: 'none',
+                })}
+            />
         </Stack.Navigator >
     )
 };

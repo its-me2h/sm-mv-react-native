@@ -34,7 +34,7 @@ function styleGenerator(className: string) {
             } else if (className.endsWith('h')) {
                 generatedStyle[property] = (parseInt(value) * height) / 100;
             } else {
-                if (name === 'flex') {
+                if (name === 'flex' || name === 'z') {
                     generatedStyle[property] = parseInt(value);
                 } else {
                     generatedStyle[property] = parseInt(value) * rem;

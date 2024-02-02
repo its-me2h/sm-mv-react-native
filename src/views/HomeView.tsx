@@ -9,9 +9,8 @@ import { SearchInput } from '../components/inputs/SearchInput';
 import { getSuggestedPros } from '../hooks/useQuery/user';
 import { getSports } from '../hooks/useQuery/sport';
 import { ClassicCard } from '../components/cards/ClassicCard';
-import { Link } from '@react-navigation/native';
 
-export function HomeView() {
+export function HomeView({ route }: any) {
 
     const { data: suggestedProData } = getSuggestedPros(6);
     const { data: sportsData } = getSports(8);
@@ -48,6 +47,9 @@ export function HomeView() {
             }
         ]
     };
+
+    console.log('route name:')
+    console.log(route.name)
 
 
     return (

@@ -16,7 +16,7 @@ export function SideNavbar() {
 
             {/* LOGO CONTAINER */}
             <View className='h-70 aspect-video mx-22 mb-30'>
-                <LogoIcon height='100%' />
+                <LogoIcon height='100%' className='self-start' />
             </View>
 
             {/* SIDENAVBAR MENU */}
@@ -25,7 +25,7 @@ export function SideNavbar() {
             {/* PROFILECARD CONTAINER */}
 
 
-            <View className={`p-12 rounded-8 items-center bg-blue-600 mx-22 mb-300`}>
+            <View role='btn-primary' className={`p-12 rounded-8 items-center bg-blue-600 mx-22 mb-300`}>
                 <Text className={`text-18 uppercase text-white`}>Create new</Text>
             </View>
 

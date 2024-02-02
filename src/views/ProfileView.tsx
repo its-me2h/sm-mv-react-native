@@ -6,21 +6,16 @@ import { ProfileCardList } from "../components/lists/ProfileCardList";
 import { getProPosts } from "../hooks/useQuery/post";
 import { getUserProfile, getSuggestedPros } from "../hooks/useQuery/user";
 
-import { useRoute } from '@react-navigation/native';
 
-
-export function ProfileView() {
-
-    const route: any = useRoute();
+export function ProfileView({ route }: any) {
 
     const { data: profileData } = getUserProfile(route.params.id);
     const { data: PostsData } = getProPosts(route.params.id);
     const { data: suggestedProData } = getSuggestedPros(13);
 
-    console.log('PERR')
-    console.log(PostsData?.pro[0])
-    // console.log(PostsData?.pro[0].post)
 
+    console.log('route:')
+    console.log(route)
 
 
 

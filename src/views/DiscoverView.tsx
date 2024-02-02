@@ -3,7 +3,7 @@ import { YView } from '../components/base/YView';
 import { Image, Text, View } from '../atlasNative';
 import { SearchInput } from '../components/inputs/SearchInput';
 
-export function DiscoverView() {
+export function DiscoverView({ route }: any) {
 
     const CategoriesData = [
         { id: 1, title: 'Football', athletesCount: 27, img: 'https://i.postimg.cc/BQWyk8vp/Rectangle-5538.png' },
@@ -17,6 +17,9 @@ export function DiscoverView() {
         { id: 9, title: 'Golf', athletesCount: 10, img: 'https://i.postimg.cc/W49CHXDq/Mask-group-3.png' },
         { id: 10, title: 'Ice hockey', athletesCount: 8, img: 'https://i.postimg.cc/6qZPTKMC/Mask-group-4.png' },
     ];
+
+    console.log('route name:')
+    console.log(route.name)
 
     return (
         <YView className='flex-1'>
