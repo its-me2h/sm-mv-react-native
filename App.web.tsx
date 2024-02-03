@@ -5,8 +5,6 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import store from './src/redux/store';
 import { BaseView } from './src/views/BaseView'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-
 
 
 const queryClient = new QueryClient();
@@ -27,7 +25,6 @@ export default function App() {
                 <NavigationContainer theme={MyTheme}>
                     <BaseView />
                 </NavigationContainer >
-                {/* <ReactQueryDevtools initialIsOpen={false} /> */}
             </QueryClientProvider>
         </ReduxProvider>
     )

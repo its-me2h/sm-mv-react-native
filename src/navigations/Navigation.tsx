@@ -8,15 +8,14 @@ import { ProfileView } from '../views/ProfileView'
 
 const Stack = createNativeStackNavigator();
 
-export function MainNavigation() {
-
+export function Navigation() {
     const screenOptions = {
         headerShown: false,
         animationEnabled: false
     };
 
     return (
-        <Stack.Navigator screenOptions={screenOptions}>
+        <Stack.Navigator screenOptions={screenOptions} >
             <Stack.Screen
                 name="Home"
                 component={HomeView}
@@ -38,13 +37,9 @@ export function MainNavigation() {
                 options={{ animation: 'none' }}
             />
             <Stack.Screen
-                navigationKey={true ? 'user' : 'guest'}
                 name="Profile"
                 component={ProfileView}
-                options={() => ({
-                    title: 'My profile',
-                    animation: 'none',
-                })}
+                options={() => ({ animation: 'none' })}
             />
         </Stack.Navigator >
     )

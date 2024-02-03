@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Image, Text, View } from '../atlasNative';
 import { YView } from '../components/base/YView';
 import { XView } from '../components/base/XView';
-import { PanoCarousel } from '../components/carousels/PanoCarousel';
+// import { PanoCarousel } from '../components/carousels/PanoCarousel';
 import PostCard from '../components/cards/PostCard';
 import { ProfileCardList } from '../components/lists/ProfileCardList';
 import { SearchInput } from '../components/inputs/SearchInput';
@@ -58,7 +58,7 @@ export function HomeView({ route }: any) {
             <YView>
                 <View className='pt-30 px-60 gap-40'>
 
-                    <PanoCarousel />
+                    {/* <PanoCarousel /> */}
                     <Categories data={sportsData?.sport} />
 
                     {/* Poste */}
