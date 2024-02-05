@@ -195,6 +195,16 @@ const baseStyles = {
     text_family1: {
         // fontFamily: 'WorkSans-BlackItalic',
         // fontFamily: 'BarlowCondensed-BoldItalic',
+    },
+
+    text_start: {
+        textAlign: "start"
+    },
+    text_center: {
+        textAlign: "center"
+    },
+    text_end: {
+        textAlign: "end"
     }
 };
 

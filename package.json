@@ -42,6 +42,7 @@
     "@react-native/typescript-config": "0.73.1",
     "@svgr/webpack": "^8.1.0",
     "@types/react": "^18.2.6",
+    "@types/react-native-video": "^5.0.19",
     "@types/react-test-renderer": "^18.0.0",
     "@types/webpack-env": "^1.18.4",
     "babel-jest": "^29.6.3",

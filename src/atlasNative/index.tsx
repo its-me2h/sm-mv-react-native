@@ -8,8 +8,9 @@ import {
     Image as NativeImage,
     TextInput as NativeTextInput,
 } from 'react-native';
-import { Svg as NativeSvg } from 'react-native-svg';
 import { Link as NativeLink } from '@react-navigation/native';
+
+import { Svg as NativeSvg } from 'react-native-svg';
 import StyleParser from './utils/styleParser';
 
 function styleInjector(Component: any, selfClosing?: boolean) {
