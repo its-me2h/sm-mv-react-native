@@ -6,7 +6,28 @@ export const GET_SPORTS = gql`
             id
             name
             mediaURL
-            CountPros
+            countPros
+        }
+    }
+`;
+
+export const GET_SPORT_PROS = gql`
+    query GetSportPros($sportId: ID) {
+        sport(id: $sportId) {
+            id
+            name
+            mediaURL
+            countPros
+            pro {
+            user {
+                id
+                isPro
+                userName
+                firstName
+                lastName
+                avatarURL
+            }
+            }
         }
     }
 `;

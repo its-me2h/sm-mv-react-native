@@ -5,18 +5,16 @@ import { ProfileCard } from "../components/cards/ProfileCard";
 import { ProfileCardList } from "../components/lists/ProfileCardList";
 import { getProPosts } from "../hooks/useQuery/post";
 import { getUserProfile, getSuggestedPros } from "../hooks/useQuery/user";
-
+import { useDispatch } from 'react-redux';
+import { navUpdate } from '../redux/navSlice';
+import { Button } from "../components/buttons/Button";
 
 export function ProfileView({ route }: any) {
-
+    const dispatch = useDispatch();
+    dispatch(navUpdate({ route: 'Profile' }));
     const { data: profileData } = getUserProfile(route.params.id);
     const { data: PostsData } = getProPosts(route.params.id);
     const { data: suggestedProData } = getSuggestedPros(13);
-
-
-    console.log('route:')
-    console.log(route)
-
 
 
 
@@ -64,8 +62,8 @@ export function ProfileView({ route }: any) {
 
                         {/* USER BIO */}
                         <View className='gap-20'>
-                            <Text className='capitalize text-white text-20'>NFL Hall of Famer - Baltimore Ravens</Text>
-                            <Text className='text-18 text-bzzr-100'>{profileData?.user.pro.bio}</Text>
+                            <Text className='capitalize text-white text-20'>Athlete Club Name - Baltimore Ravens</Text>
+                            <Text className='text-18 text-bzzr-100' style={{ lineHeight: 20 }}>{profileData?.user.pro.bio}</Text>
                         </View>
 
                         {/* tabs */}
@@ -89,7 +87,7 @@ export function ProfileView({ route }: any) {
                                     <PostCard
                                         key={index}
                                         profileInfo={PostsData?.pro[0].user}
-                                        time="Some time ago"  // You can replace this with the actual time logic
+                                        time="1 hour ago"
                                         content={post.content}
                                         img={post.mediaURL}
                                     />
@@ -104,12 +102,19 @@ export function ProfileView({ route }: any) {
 
                         {/* PRO INTERCTIONS */}
                         <View className='bg-bzzr-200 border-1 border-bzzr-600 rounded-18 py-30 px-20 gap-20'>
-                            <View className={`p-15 rounded-8 items-center ${profileData?.user.pro.isFollowing ? 'bg-white' : 'border-1 border-white'}`}>
-                                <Text className={`text-20 uppercase ${profileData?.user.pro.isFollowing ? 'text-blue-600' : 'text-white'}`}>{profileData?.user.pro.isFollowing ? 'following' : 'follow'}</Text>
-                            </View>
-                            <View className={`p-15 rounded-8 items-center ${profileData?.user.pro.isSubscribing ? 'bg-white' : 'bg-blue-600'}`}>
-                                <Text className={`text-20 uppercase ${profileData?.user.pro.isSubscribing ? 'text-blue-600' : 'text-white'}`}>{profileData?.user.pro.isSubscribing ? 'subscribing' : 'subscribe'}</Text>
-                            </View>
+
+                            <Button
+                                type={profileData?.user.pro.isFollowing ? 'active' : 'secondary'}
+                            >
+                                {profileData?.user.pro.isFollowing ? 'following' : 'follow'}
+                            </Button>
+
+                            <Button
+                                type={profileData?.user.pro.isSubscribing ? 'active' : 'primary'}
+                            >
+                                {profileData?.user.pro.isSubscribing ? 'subscribing' : 'subscribe'}
+                            </Button>
+
                         </View>
 
                         <ProfileCardList name='similar suggestions' data={suggestedProData?.pro} />

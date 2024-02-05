@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Button, Image, Pressable, View } from '../../atlasNative';
 import { Animated, StyleSheet } from 'react-native';
 import { ProfileCard } from '../cards/ProfileCard';
+import { AngleLeftIcon } from '../shapes/svg/AngleLeftIcon';
+import { AngleRightIcon } from '../shapes/svg/AngleRightIcon';
 
 export function PanoCarousel() {
 
@@ -29,8 +31,8 @@ export function PanoCarousel() {
 
     useEffect(() => {
         xAnimation1.setValue(-viewWidth * 0.5);
-        xAnimation2.setValue((-viewWidth * 0.5) - 130);
-        xAnimation3.setValue((-viewWidth * 0.5) + 130);
+        xAnimation2.setValue((-viewWidth * 0.5) - 120);
+        xAnimation3.setValue((-viewWidth * 0.5) + 120);
     }, [viewWidth]);
 
     const leftClick = () => {
@@ -93,48 +95,35 @@ export function PanoCarousel() {
 
     const profilesCardData = [
         {
+            id: 2,
+            firstName: 'Lebron',
+            lastName: 'James',
+            userName: 'kingjames',
+            avatarURL: 'https://i.postimg.cc/NFmKxzc8/Foa1k1hacAULB56.webp',
+            img: 'https://i.postimg.cc/QtC5QTf7/wp9764767.webp'
+        },
+        {
             id: 1,
             firstName: 'Leo',
             lastName: 'Messi',
-            username: 'leomessi',
-            avatarURL: 'https://i.postimg.cc/G3qCQgMR/bzzr1-1.jpg',
-            img: 'https://i.postimg.cc/G3qCQgMR/bzzr1-1.jpg',
+            userName: 'leomessi',
+            avatarURL: 'https://i.postimg.cc/bwLkc0rX/MESSI--scaled.webp',
+            img: 'https://i.postimg.cc/mrb7rqM8/8cc53404-0206-4355-8cb5-bdd286ad48e2.webp',
         },
         {
-            id: 1,
-            name: 'Cristiano Ronaldo',
-            username: 'cristiano',
-            avatarURL: 'https://i.postimg.cc/YCmBtrt2/bzzr1-2.jpg',
-            img: 'https://i.postimg.cc/YCmBtrt2/bzzr1-2.jpg'
-        },
-        {
-            id: 1,
-            name: 'Xavi Hernández',
-            username: 'xavi',
-            avatarURL: 'https://i.postimg.cc/tCcH0ZQm/bzzr1.jpg',
-            img: 'https://i.postimg.cc/tCcH0ZQm/bzzr1.jpg',
-        },
-        {
-            id: 1,
-            name: 'Mohamed Salah',
-            username: 'mosalah',
-            avatarURL: 'https://i.postimg.cc/Ght1SPNy/bzzr1-3.jpg',
-            img: 'https://i.postimg.cc/Ght1SPNy/bzzr1-3.jpg',
-        },
-        {
-            id: 1,
-            name: 'Neymar Jr',
-            username: 'neymarjr',
-            avatarURL: 'https://i.postimg.cc/L5WYZthZ/bzzr1-4.jpg',
-            img: 'https://i.postimg.cc/L5WYZthZ/bzzr1-4.jpg'
-        },
+            id: 3,
+            name: 'Achraf Hakimi',
+            userName: 'achrafhakimi',
+            avatarURL: 'https://i.postimg.cc/T3m299Dj/319320936_885460269305686_5069628561588945370_n.webp',
+            img: 'https://i.postimg.cc/tg2Wn5Ny/hakimi-mbappe.webp'
+        }
     ];
 
     return (
         <View className='flex-row gap-20 justify-between'>
 
             <Pressable className='justify-center z-10' onPress={leftClick}>
-                <View className='w-20 aspect-square bg-white'></View>
+                <AngleLeftIcon height='100%' className='w-15 text-white' />
             </Pressable>
 
             <View className='h-400 flex-1 relative justify-center'>
@@ -148,7 +137,6 @@ export function PanoCarousel() {
                             <Image
                                 className='absolute left-0 top-0 w-full h-full'
                                 source={{ uri: profilesCardData[0].img }}
-                                blurRadius={2}
                             />
                             <View className='p-4% w-full h-full flex-row items-start'>
                                 <ProfileCard
@@ -207,7 +195,7 @@ export function PanoCarousel() {
             </View>
 
             <Pressable className='justify-center z-10' onPress={rightClick}>
-                <View className='w-20 aspect-square bg-white'></View>
+                <AngleRightIcon height='100%' className='w-15 text-white' />
             </Pressable>
 
         </View>

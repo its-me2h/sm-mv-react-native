@@ -191,6 +191,11 @@ const baseStyles = {
     capitalize: {
         textTransform: "capitalize"
     },
+
+    text_family1: {
+        // fontFamily: 'WorkSans-BlackItalic',
+        // fontFamily: 'BarlowCondensed-BoldItalic',
+    }
 };
 
 const styles = StyleSheet.create({

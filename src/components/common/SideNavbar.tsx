@@ -3,9 +3,10 @@ import { View, Text } from '../../atlasNative';
 import { ProfileCard } from '../cards/ProfileCard';
 import { LogoIcon } from '../shapes/svg/LogoIcon';
 import { EllipsisIcon } from '../shapes/svg/EllipsisIcon';
-import { IconMenuList } from '../lists/IconMenuList';
+import { NavItemsList } from '../lists/NavItemsList';
 import { useSelector } from 'react-redux';
 import { getUserInfo } from '../../hooks/useQuery/user';
+import { Button } from '../buttons/Button';
 
 export function SideNavbar() {
     const userId: any = useSelector((state: any) => state.user.id)
@@ -13,28 +14,21 @@ export function SideNavbar() {
 
     return (
         <View className='flex-1 justify-between'>
-
             <View>
-
-                <View className='h-60 aspect-video mx-22 mb-30'>
+                <View className='h-60 aspect-video ml-22 mb-35'>
                     <LogoIcon height='100%' className='self-start' />
                 </View>
-
-                <IconMenuList />
-
+                <NavItemsList />
             </View>
 
-            <View role='btn-primary' className={`p-14 rounded-8 items-center bg-blue-600`}>
-                <Text className={`text-18 uppercase text-white`}>Create new</Text>
-            </View>
+            <Button type='primary'>Create new</Button>
 
             <View className='flex-row gap-22'>
                 <ProfileCard size='sm' {...userData?.user} />
-                <View className='w-45 aspect-square bg-slate-900 p-10 rounded-999'>
+                <View className='w-45 aspect-square p-10 rounded-999'>
                     <EllipsisIcon height='100%' className='text-white' />
                 </View>
             </View>
-
         </View>
     );
 }

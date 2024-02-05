@@ -1,73 +1,38 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Image, Text, View } from '../atlasNative';
 import { YView } from '../components/base/YView';
 import { XView } from '../components/base/XView';
-// import { PanoCarousel } from '../components/carousels/PanoCarousel';
+import { PanoCarousel } from '../components/carousels/PanoCarousel';
 import PostCard from '../components/cards/PostCard';
 import { ProfileCardList } from '../components/lists/ProfileCardList';
 import { SearchInput } from '../components/inputs/SearchInput';
 import { getSuggestedPros } from '../hooks/useQuery/user';
 import { getSports } from '../hooks/useQuery/sport';
 import { ClassicCard } from '../components/cards/ClassicCard';
+import { getProPosts } from '../hooks/useQuery/post';
 
-export function HomeView({ route }: any) {
-
+export function HomeView() {
     const { data: suggestedProData } = getSuggestedPros(6);
     const { data: sportsData } = getSports(8);
 
-    const PostsData =
-    {
-        pro: [
-            {
-                post: [
-                    {
-                        content: "Lebron private content",
-                        isPublic: false,
-                        mediaURL: "https://i.postimg.cc/ncQcXwQw/the-blurred-819388-1280.webp"
-                    },
-                    {
-                        content: "Lebron public content",
-                        isPublic: true,
-                        mediaURL: "https://i.postimg.cc/d0NMc62P/CE6D4JSX7BHU7KJWQ5OTDCULUA.webp"
-                    },
-                    {
-                        content: "Lebron private content",
-                        isPublic: false,
-                        mediaURL: "https://i.postimg.cc/ncQcXwQw/the-blurred-819388-1280.webp"
-                    }
-                ],
-                user: {
-                    avatarURL: "https://i.postimg.cc/NFmKxzc8/Foa1k1hac-AULB56.webp",
-                    firstName: "lebron",
-                    id: "2",
-                    isPro: true,
-                    lastName: "james",
-                    userName: "kingjames"
-                }
-            }
-        ]
-    };
-
-    console.log('route name:')
-    console.log(route.name)
-
+    const { data: PostsData } = getProPosts(5);
 
     return (
         <View className='flex-row flex-1'>
             {/* FEED CONTAINER */}
             <YView>
-                <View className='pt-30 px-60 gap-40'>
+                <View className='pt-30 px-60 gap-45'>
 
-                    {/* <PanoCarousel /> */}
+                    <PanoCarousel />
                     <Categories data={sportsData?.sport} />
 
                     {/* Poste */}
-                    <View className='gap-30'>
+                    <View className='gap-30 pb-40'>
                         {PostsData?.pro[0].post.map((post: any, index: any) => (
                             <PostCard
                                 key={index}
                                 profileInfo={PostsData?.pro[0].user}
-                                time="Some time ago"  // You can replace this with the actual time logic
+                                time="1 hour ago"
                                 content={post.content}
                                 img={post.mediaURL}
                             />
@@ -89,9 +54,9 @@ export function HomeView({ route }: any) {
 
 function Categories({ data }: any) {
     return (
-        <View>
-            <View className='flex-row justify-between items-end mb-10'>
-                <Text className='text-30 text-white'>CATEGORIES</Text>
+        <View className='gap-10'>
+            <View className='flex-row justify-between items-end'>
+                <Text className='text-30 text-white uppercase'>categories</Text>
                 <Text className='text-18 text-white'>see more</Text>
             </View>
             <XView>
@@ -99,8 +64,9 @@ function Categories({ data }: any) {
                     {data?.map((item: any) => (
                         <ClassicCard
                             key={item.id}
-                            labe={item.name}
-                            subLabel={item.CountPros + ' athletes'}
+                            id={item.id}
+                            label={item.name}
+                            subLabel={item.countPros + ' athletes'}
                             mediaURL={item.mediaURL}
                         />
                     ))}

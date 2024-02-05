@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import React from 'react'
 import { Provider as ReduxProvider } from 'react-redux';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import { NavigationContainer, useNavigationContainerRef, DefaultTheme } from '@react-navigation/native';
 import store from './src/redux/store';
 import { BaseView } from './src/views/BaseView'
 

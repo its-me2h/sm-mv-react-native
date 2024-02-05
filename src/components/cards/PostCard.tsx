@@ -18,12 +18,12 @@ export default function PostCard({ profileInfo, time, content, img }: any) {
                 />
                 <View className='flex-row gap-20 items-center'>
                     <Text className='text-bzzr-100 text-18'>{time}</Text>
-                    <EllipsisIcon height='10' className='w-20 h-5 text-bzzr-100' />
+                    <EllipsisIcon height='100%' className='w-25 text-bzzr-100' />
                 </View>
             </View>
 
             <View className='gap-40'>
-                <Text className='px-30 text-20 text-white'>{content}</Text>
+                <Text className='px-30 text-20 text-white' style={{ lineHeight: 25 }}>{content}</Text>
                 {/* <View className='h-500'> */}
                 <Image
                     className='h-55h'
@@ -34,16 +34,16 @@ export default function PostCard({ profileInfo, time, content, img }: any) {
 
             {/* Footer */}
             <View className='p-30 flex-row justify-between'>
-                <View className='flex-row gap-10'>
+                <View className='flex-row gap-20'>
                     <View className='w-45 aspect-square p-10 rounded-999'>
-                        <HeartIcon height='100%' className='flex-1 text-white' />
+                        <HeartIcon height='100%' className='w-40 flex-1 text-white' />
                     </View>
                     <View className='w-45 aspect-square p-10 rounded-999'>
-                        <CommentIcon height='100%' className='text-white' />
+                        <CommentIcon height='100%' className='w-45 text-white' />
                     </View>
                 </View>
                 <View className='w-45 aspect-square p-10 rounded-999'>
-                    <BookmarkIcon height='100%' className='text-white' />
+                    <BookmarkIcon height='100%' className='w-60 text-white' />
                 </View>
             </View>
 

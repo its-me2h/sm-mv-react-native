@@ -9,9 +9,9 @@ import { ProfileView } from '../views/ProfileView'
 const Stack = createNativeStackNavigator();
 
 export function Navigation() {
+
     const screenOptions = {
-        headerShown: false,
-        animationEnabled: false
+        headerShown: false
     };
 
     return (

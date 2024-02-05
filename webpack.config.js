@@ -49,6 +49,15 @@ const imageLoaderConfiguration = {
     },
 };
 
+const ttfLoaderConfiguration = {
+    test: /\.ttf$/,
+    use: [
+        {
+            loader: 'url-loader',
+        },
+    ],
+};
+
 module.exports = {
     entry: {
         app: path.join(__dirname, 'index.web.ts'),
@@ -69,6 +78,7 @@ module.exports = {
             babelLoaderConfiguration,
             imageLoaderConfiguration,
             svgLoaderConfiguration,
+            ttfLoaderConfiguration
         ],
     },
     plugins: [
