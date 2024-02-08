@@ -3,8 +3,8 @@ import { Pressable, Text } from '../../atlasNative';
 
 export function Button({ children, type }: any) {
     return (
-        <Pressable role={`btn-${type}`} className={`p-15 rounded-6 items-center border-1 ${types[type].background} ${types[type].border}`}>
-            <Text className={`text-20 uppercase ${types[type]?.text}`}>{children}</Text>
+        <Pressable role={`btn-${type}`} className={`px-30 py-15 rounded-6 items-center border-1 ${types[type].background} ${types[type].border}`}>
+            <Text numberOfLines={1} ellipsizeMode="tail" className={`text-20 uppercase ${types[type]?.text}`}>{children}</Text>
         </Pressable>
     );
 };

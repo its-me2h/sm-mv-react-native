@@ -82,7 +82,7 @@ function NavItem({
                         : <UnselectedIcon height='100%' className='text-bzzr-100' />
                     }
                 </View>
-                <Text className={`text-20 ${selected ? 'text-white' : 'text-bzzr-100'}`}>
+                <Text numberOfLines={1} ellipsizeMode="tail" className={`text-20 ${selected ? 'text-white' : 'text-bzzr-100'}`}>
                     {label}
                 </Text>
             </View>

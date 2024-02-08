@@ -11,9 +11,9 @@ export function RegistrationView() {
 
     return (
 
-        <View className="flex-1 bg-bzzr-900 flex-row">
+        <View className="flex-row flex-1 bg-bzzr-900">
 
-            <View className="relative flex-1 bg-red-700">
+            <View className="relative flex-1">
                 <LogoIcon className='absolute w-115 top-30 left-5%' />
                 <video
                     autoPlay
@@ -32,12 +32,12 @@ export function RegistrationView() {
 
                     <View className='gap-x-20'>
                         <View className="flex-row gap-y-20">
-                            <TextInput placeholder='first name' />
-                            <TextInput placeholder='last name' />
+                            <TextInput placeholder='First Name' />
+                            <TextInput placeholder='Last Name' />
                         </View>
-                        <TextInput placeholder='username' />
-                        <TextInput placeholder='email' />
-                        <TextInput placeholder='password' />
+                        <TextInput placeholder='Username' />
+                        <TextInput placeholder='Email' />
+                        <TextInput placeholder='Password' />
                     </View>
 
                     <Text className="text-18 text-white">Yes, I understand and agree to the Terms of Service and Privacy Policy.</Text>

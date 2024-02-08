@@ -5,6 +5,7 @@ import { DiscoverView } from '../views/DiscoverView'
 import { SubscriptionsView } from '../views/SubscriptionsView'
 import { SettingsView } from '../views/SettingsView'
 import { ProfileView } from '../views/ProfileView'
+import { StreamView } from '../views/StreamView';
 
 const Stack = createNativeStackNavigator();
 
@@ -39,6 +40,11 @@ export function Navigation() {
             <Stack.Screen
                 name="Profile"
                 component={ProfileView}
+                options={() => ({ animation: 'none' })}
+            />
+            <Stack.Screen
+                name="Stream"
+                component={StreamView}
                 options={() => ({ animation: 'none' })}
             />
         </Stack.Navigator >
