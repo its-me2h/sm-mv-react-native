@@ -57,19 +57,29 @@ export function DiscoverView({ route }: any) {
                         <Text className='text-18 text-white'>Filter</Text>
                     </View>
                     <View className='flex-row flex-wrap gap-y-20 gap-x-30'>
-                        {cardsData?.map((item: any) => (
-                            <ClassicCard
-                                key={route?.params?.id ? item.user.id : item.id}
-                                id={route?.params?.id ? item.user.id : item.id}
-                                label={route?.params?.id
-                                    ? item.user.userName
-                                    : item.name}
-                                subLabel={route?.params?.id
-                                    ? '@' + item.user.userName
-                                    : item.CountPros + ' athletes'}
-                                mediaURL={route?.params?.id ? item.user.avatarURL : item.mediaURL}
-                            />
-                        ))}
+                        {cardsData?.map((item: any) => {
+                            const isProfileRoute = route?.params?.id;
+                            const user = isProfileRoute ? item.user : item;
+                            const key = isProfileRoute ? user.id : item.id;
+                            const id = isProfileRoute ? user.id : item.id;
+                            const label = isProfileRoute ? user.userName : item.name;
+                            const subLabel = isProfileRoute ? '@' + user.userName : item.CountPros + ' athletes';
+                            const mediaURL = isProfileRoute ? user.avatarURL : item.mediaURL;
+                            const screen = isProfileRoute ? 'Profile' : 'Discover';
+                            const link = { screen: screen, params: { id: item.id } };
+
+                            return (
+                                <ClassicCard
+                                    key={key}
+                                    id={id}
+                                    label={label}
+                                    subLabel={subLabel}
+                                    mediaURL={mediaURL}
+                                    to={link}
+                                />
+                            );
+                        })}
+
                     </View>
                 </View>
 

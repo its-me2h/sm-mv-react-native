@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Button, Image, Text, View } from '../atlasNative';
+import { Button, Image, Link, Text, View } from '../atlasNative';
 import { YView } from '../components/base/YView';
 import { XView } from '../components/base/XView';
 import { PanoCarousel } from '../components/carousels/PanoCarousel';
@@ -57,7 +57,7 @@ function Categories({ data }: any) {
         <View className='gap-10'>
             <View className='flex-row justify-between items-end'>
                 <Text className='text-30 text-white uppercase'>categories</Text>
-                <Text className='text-18 text-white'>see more</Text>
+                <Link to={{ screen: 'Discover' }} className='text-18 text-white'>See more</Link>
             </View>
             <XView>
                 <View className='flex-row gap-12'>
@@ -68,6 +68,7 @@ function Categories({ data }: any) {
                             label={item.name}
                             subLabel={item.countPros + ' athletes'}
                             mediaURL={item.mediaURL}
+                            link={{ screen: 'Discover', params: { id: item.id } }}
                         />
                     ))}
                 </View>
