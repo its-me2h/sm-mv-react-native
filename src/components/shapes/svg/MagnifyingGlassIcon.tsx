@@ -13,7 +13,7 @@ export function MagnifyingGlassIcon({ ...props }: any) {
             <Path
                 d="M18 18l-4.014-4.02m2.224-5.375a7.605 7.605 0 11-15.21 0 7.605 7.605 0 0115.21 0z"
                 stroke="currentColor"
-                strokeWidth={2}
+                strokeWidth={1.5}
                 strokeLinecap="round"
             />
         </Svg>
