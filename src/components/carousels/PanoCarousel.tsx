@@ -97,7 +97,62 @@ export function PanoCarousel() {
 
 
     const rightClick = () => {
+        if (isAnimating) {
+            return;
+        }
+        isAnimating = true;
 
+        Animated.parallel([
+            Animated.timing(xAnimation1, {
+                toValue: xAnimation3._value,
+                duration: 600,
+                useNativeDriver: true,
+            }),
+            Animated.timing(zIndex1, {
+                toValue: zIndex3._value,
+                duration: 300,
+                useNativeDriver: true,
+            }),
+            Animated.timing(scale1, {
+                toValue: scale3._value,
+                duration: 600,
+                useNativeDriver: true,
+            }),
+
+            Animated.timing(xAnimation2, {
+                toValue: xAnimation1._value,
+                duration: 600,
+                useNativeDriver: false,
+            }),
+            Animated.timing(zIndex2, {
+                toValue: zIndex1._value,
+                duration: 300,
+                useNativeDriver: true,
+            }),
+            Animated.timing(scale2, {
+                toValue: scale1._value,
+                duration: 600,
+                useNativeDriver: true,
+            }),
+
+            Animated.timing(xAnimation3, {
+                toValue: xAnimation2._value,
+                duration: 600,
+                useNativeDriver: false,
+            }),
+            Animated.timing(zIndex3, {
+                toValue: zIndex2._value,
+                duration: 300,
+                useNativeDriver: false,
+            }),
+            Animated.timing(scale3, {
+                toValue: scale2._value,
+                duration: 600,
+                useNativeDriver: false,
+            }),
+        ], { stopTogether: false }).start(() => {
+            isAnimating = false;
+        });
     };
 
     const profilesCardData = [
@@ -107,8 +162,9 @@ export function PanoCarousel() {
             lastName: 'Hakimi',
             userName: 'achrafhakimi',
             avatarURL: 'https://i.postimg.cc/T3m299Dj/319320936_885460269305686_5069628561588945370_n.webp',
-            img: 'https://i.postimg.cc/tg2Wn5Ny/hakimi-mbappe.webp'
+            img: 'https://i.postimg.cc/t45j6PyJ/Screenshot-2024-02-08-at-16-09-51.png'
         },
+
         {
             id: 1,
             firstName: 'Lebron',
@@ -142,7 +198,7 @@ export function PanoCarousel() {
                 >
                     <Animated.View style={{ flex: 1, transform: [{ scale: scale1 }] }}>
                         <View className='relative flex-1 bg-slate-700 rounded-18 overflow-hidden'>
-                            <Link to={{ screen: 'Stream', params: { id: 2 } }} className='absolute w-full h-full z-2 bg-red-400'></Link>
+                            <Link to={{ screen: 'Stream' }} className='absolute w-full h-full z-2'></Link>
                             <Image
                                 className='absolute left-0 top-0 w-full h-full'
                                 source={{ uri: profilesCardData[0].img }}
@@ -164,6 +220,7 @@ export function PanoCarousel() {
                 >
                     <Animated.View style={{ flex: 1, transform: [{ scale: scale2 }] }}>
                         <View className='relative flex-1 bg-slate-700 rounded-18 overflow-hidden'>
+                            <Link to={{ screen: 'Stream' }} className='absolute w-full h-full z-2'></Link>
                             <Image
                                 className='absolute left-0 top-0 w-full h-full'
                                 source={{ uri: profilesCardData[1].img }}
@@ -185,6 +242,7 @@ export function PanoCarousel() {
                 >
                     <Animated.View style={{ flex: 1, transform: [{ scale: scale3 }] }}>
                         <View className='relative flex-1 bg-slate-700 rounded-18 overflow-hidden'>
+                            <Link to={{ screen: 'Stream' }} className='absolute w-full h-full z-2'></Link>
                             <Image
                                 className='absolute left-0 top-0 w-full h-full'
                                 source={{ uri: profilesCardData[2].img }}

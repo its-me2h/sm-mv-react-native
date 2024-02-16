@@ -1,6 +1,6 @@
 import { GraphQLClient } from 'graphql-request';
 
-const endpoint = 'http://192.168.1.17:9009/graphql';
+const endpoint = 'http://192.168.100.14:9009/graphql';
 
 const api = new GraphQLClient(endpoint);
 
